@@ -27,7 +27,7 @@ public class CelulaSexuata extends Celula implements Runnable {
 		this.isReady = isReady;
 	}
 
-	public void getNewState() {
+	public boolean getNewState() {
 		return this.isReady;
 	}
 
