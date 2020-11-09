@@ -5,17 +5,33 @@ import java.util.concurrent.locks.Lock;
 public class CelulaSexuata extends Celula implements Runnable {
 
 	private boolean isReady;
+	private Service service = new Service();
+	private Food f;
+	private Lock l;
 
 	// primeste din afara un array list in care pune celulele nou create
 	public CelulaSexuata(Food f, Lock l) {
 
 		super(f, l);
 		this.isReady = false;
+		this.f = f;
+		this.l = l;
 	}
 
 	public void reproduce() {
 		System.out.println("Create a new cell.");
 		this.isReady = true;
+
+		for(int index = 0; index <= service.getCells().length; index++) {
+			if(service.getCells()[index].getNewState() == service.getCells()[index+1].getNewState()) {
+				CelulaSexuata celll = new CelulaSexuata(f, l);
+
+				service.setCell(celll);
+
+				Thread thread = new Thread(celll);
+				thread.start();
+			}
+		}
 
 //		CelulaSexuata newCell = new CelulaSexuata(super.getFood(), super.getLock());
 //		super.setNumberOfMeals(0);
@@ -43,8 +59,10 @@ public class CelulaSexuata extends Celula implements Runnable {
 			if(currentFood > 0) // if there is food, the cell eats
 			{
 				//super.getLock().lock();
+				System.out.println("PQPQPQ");
 				super.eat(); // the cell is full now
 				//super.getLock();
+				System.out.println("No of meals: " + super.getNumberOfMeals());
 				if(super.getNumberOfMeals() == 9)
 				{
 					this.reproduce();

@@ -9,8 +9,6 @@ import backend.*;
 
 public class Main {
 
-	private ArrayList<CelulaSexuata> cells = new ArrayList<CelulaSexuata>();
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Food f = new Food(30);
@@ -18,26 +16,21 @@ public class Main {
 		CelulaAsexuata c = new CelulaAsexuata(f, l);
 		Thread t = new Thread(c);
 
-		// createListOfSexuateCells(f, l);
+//		CelulaSexuata cell1 = new CelulaSexuata(f, l);
+//		CelulaSexuata cell2 = new CelulaSexuata(f, l);
+//
+//		Service service = new Service();
+//
+//		service.setCell(cell1);
+//		service.setCell(cell2);
+//
+//		Thread thread1 = new Thread(cell1);
+//		Thread thread2 = new Thread(cell2);
+//
+//		thread1.start();
+//		thread2.start();
 
 		t.start();
 	}
 
-	private void createListOfSexuateCells(Food f, Lock l) {
-// TODO FIXME
-		CelulaSexuata cell1 = new CelulaSexuata(f, l);
-		CelulaSexuata cell2 = new CelulaSexuata(f, l);
-
-//		this.cells.add(cell1);
-//		this.cells.add(cell2);
-	}
-
-	private void verifyIfCellReadyInList(CelulaSexuata cell, Food f, Lock l) {
-// TODO FIXME
-//		for(CelulaSexuata celula : this.cells) {
-//			if(celula.getNewState() == cell.getNewState()) {
-//				this.cells.add(new CelulaSexuata(f, l));
-//			}
-//		}
-	}
 }
