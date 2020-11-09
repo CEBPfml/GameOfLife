@@ -3,8 +3,9 @@ package backend;
 import java.util.Random;
 
 public abstract class Celula {
-	private int timeFull = 5000;
-	private int timeStarve = 10000;
+	ConfigLoader configLoader = new ConfigLoader();
+	private int timeFull = Integer.parseInt(configLoader.getProperty("T_full"));
+	private int timeStarve = Integer.parseInt(configLoader.getProperty("T_starve"));
 	private int numberOfMeals;
 	private Food food = null;
 	private Random rand;

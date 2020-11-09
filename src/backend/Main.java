@@ -2,16 +2,22 @@ package backend;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 import backend.*;
 
 public class Main {
 
+//	private ArrayList<CelulaSexuata> cells = new ArrayList<CelulaSexuata>();
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Food f = new Food(30);
+		ConfigLoader configLoader = new ConfigLoader();
+		int food_units = Integer.parseInt(configLoader.getProperty("food_units"));
+		Food f = new Food(food_units);
 
 		CelulaAsexuata c = new CelulaAsexuata(f);
 		Thread t = new Thread(c);
