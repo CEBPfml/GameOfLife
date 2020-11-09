@@ -9,7 +9,7 @@ import backend.*;
 
 public class Main {
 
-	private CelulaSexuata[] cells = [];
+	private ArrayList<CelulaSexuata> cells = new ArrayList<CelulaSexuata>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
