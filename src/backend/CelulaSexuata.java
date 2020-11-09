@@ -12,7 +12,7 @@ public class CelulaSexuata extends Celula implements Runnable {
 	// primeste din afara un array list in care pune celulele nou create
 	public CelulaSexuata(Food f, Lock l) {
 
-		super(f, l);
+		super(f);
 		this.isReady = false;
 		this.f = f;
 		this.l = l;
@@ -52,17 +52,14 @@ public class CelulaSexuata extends Celula implements Runnable {
 
 		// at this moment the cell is hungry
 		while(System.currentTimeMillis() - start < super.getStarvationTime()) {
-			int currentFood = super.getFoodUnits();
-			System.out.println("Food units: " + currentFood);
-			System.out.println(Thread.currentThread().getName());
-			System.out.println();
-			if(currentFood > 0) // if there is food, the cell eats
+			if(super.eat()) // if there is food, the cell eats
 			{
 				//super.getLock().lock();
 				System.out.println("PQPQPQ");
 				super.eat(); // the cell is full now
 				//super.getLock();
 				System.out.println("No of meals: " + super.getNumberOfMeals());
+
 				if(super.getNumberOfMeals() == 9)
 				{
 					this.reproduce();

@@ -12,9 +12,12 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Food f = new Food(30);
-		Lock l = new ReentrantLock();
-		CelulaAsexuata c = new CelulaAsexuata(f, l);
+
+		CelulaAsexuata c = new CelulaAsexuata(f);
 		Thread t = new Thread(c);
+		t.start();
+//		CelulaAsexuata c = new CelulaAsexuata(f, l);
+//		Thread t = new Thread(c);
 
 //		CelulaSexuata cell1 = new CelulaSexuata(f, l);
 //		CelulaSexuata cell2 = new CelulaSexuata(f, l);
@@ -30,7 +33,6 @@ public class Main {
 //		thread1.start();
 //		thread2.start();
 
-		t.start();
 	}
 
 }
